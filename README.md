@@ -38,19 +38,19 @@ print(result)
 
 Note that pre_var is not required - it is just needed if you want to adjust to post-baseline between-group comparison for the pre-baseline values. This improves power and precision but is not available in all studies.
 
-##Functions
-calculate_winP
+## Functions
+calculate_winP()
 
 Calculates win probability and related statistics.
 
-Arguments:
+### Arguments:
 
 data: A data frame containing the variables for analysis
 group_var: The name of the grouping variable
 post_var: The name of the post-treatment variable
 pre_var: The name of the pre-treatment variable (optional)
 
-Returns:
+### Returns:
 A data frame containing Win Probability and related statistics
 
 ## Dependencies
