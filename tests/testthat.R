@@ -8,5 +8,10 @@
 
 library(testthat)
 library(winprob)
+library(dplyr)
+library(stats)
+library(sandwich)
+library(lmtest)
+library(broom)
 
 test_check("winprob")

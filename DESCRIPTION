@@ -1,12 +1,20 @@
 Package: winprob
-Title: What the Package Does (One Line, Title Case)
+Title: Calculate Zou's Win Probability
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
+    person("Pavel", "Roshanov", , "pavelroshanov@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+Description:Based on idea and SAS code in Zou G, Zou L, Qiu S Fang. Parametric and nonparametric methods for confidence intervals and sample size planning for win probability in parallel-group randomized trials with Likert item and Likert scale data. Pharmaceutical Statistics. 2023 May 1;22(3):418–39. This package calculates the Win Probability (WinP) and its confidence interval along with other related metrics.
+License: use_gpl3_license()
+Imports:
+    dplyr,
+    stats,
+    sandwich,
+    lmtest,
+    broom
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3

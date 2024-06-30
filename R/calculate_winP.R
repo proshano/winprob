@@ -4,38 +4,22 @@
 #'
 #' This function calculates the Win Probability (WinP) and its confidence interval
 #' along with other related metrics.
-#'
 #' @param data A data frame containing the data.
 #' @param group_var A string specifying the name of the grouping variable.
 #' @param post_var A string specifying the name of the post-baseline variable.
 #' @param pre_var An optional string specifying the name of the pre-baseline variable (not required).
 #'
+#'@importFrom dplyr arrange desc mutate group_by summarise ungroup left_join filter
+#' @importFrom stats lm coef pnorm as.formula
+#' @importFrom sandwich vcovHC
+#' @importFrom lmtest coeftest
+#' @importFrom broom tidy
+#'
 #' @return A data frame containing the calculated metrics.
-#'
-#' @examples
-#' data <- data.frame(
-#'   id = 1:61,
-#'   group = c(rep(0, 27), rep(1, 34)),
-#'   pre = c(18, 27, 16, 17, 15, 20, 16, 28, 28, 25, 24, 16, 26, 21, 21, 22, 26, 19, 22, 16, 21, 20, 17, 22, 19, 21, 18, 21, 27, 15, 24, 15, 17, 20, 18, 28, 21, 18, 27.46, 19, 20, 16, 21, 23, 23, 24, 25, 22, 20, 20, 25, 18, 26, 20, 17, 22, 22, 23, 17, 22, 26),
-#'   post = c(17, 26, 17, 14, 12, 19, 13, 26, 26, 9, 14, 19, 13, 7, 18, 18, 19, 19, 20, 7, 19, 16, 15, 20, 16, 7, 19, 13, 8, 8, 14, 15, 9, 7, 8, 11, 7, 8, 22, 14, 13, 17, 19, 11, 16, 16, 20, 15, 7, 12.13, 15, 17, 1, 27, 20, 12, 15.38, 11, 15, 7, 24)
-#' )
-#' result_with_pre <- calculate_winP(data, group_var = "group", pre_var = "pre", post_var = "post")
-#' print(result_with_pre)
-#' result_without_pre <- calculate_winP(data, group_var = "group", post_var = "post")
-#' print(result_without_pre)
-#'
 #' @export
 
+
 calculate_winP <- function(data, group_var, post_var, pre_var = NULL) {
-  # List of required packages
-  required_packages <- c("dplyr", "sandwich", "lmtest", "broom")
-  # Install missing packages
-  for (pkg in required_packages) {
-    if (!require(pkg, character.only = TRUE)) {
-      install.packages(pkg, dependencies = TRUE)
-      library(pkg, character.only = TRUE)
-    }
-  }
 
   # Calculate overall rank
   data <- data %>%
