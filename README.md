@@ -36,7 +36,7 @@ result <- calculate_winP(data = sample.data, group_var = "group", post_var= "pos
 print(result)
 ```
 
-Note that pre_var is not required - it is just needed if you want to adjust to post-baseline between-group comparison for the pre-baseline values. This improves power and precision but is not available in all studies.
+Note that pre_var is not required - it is just needed if you want to adjust the post-baseline between-group comparison for the pre-baseline values. This improves power and precision but is not available in all studies.
 
 ## Functions
 calculate_winP()
